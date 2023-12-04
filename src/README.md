@@ -1,14 +1,8 @@
-# Laboratory #6 - DB Access with Python
+# DB Access with Python
 
 ## Description
-In this lab we will develop a web-based application that generates reports by reading objects from a relational database
+I developed a web-based application that generates reports by reading objects from a relational database
 in MySQL. 
-
-The problem at hand is a simplified version of the University scenario we handled several times. 
-The main body of the classes are already provided for you.  
-
-### To-Dos
-Follow the `#TODO` list provided on the PyCharm project.
 
 ## Flask
 [Flask](https://palletsprojects.com/p/flask/) is a Python framework that allows to set up a *HTTP server* by just 
@@ -84,8 +78,6 @@ The `student` table stores the student objects.
 | gpa| decimal(3,2)|
 
 The **Primary Key** is **(id)**.
-
-### Hints: SQL Queries
 
 * **Course Queries**  
     - `SELECT subject, number, title FROM university.course`
