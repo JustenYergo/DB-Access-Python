@@ -1,0 +1,108 @@
+ASSUMPTIONS:
+
+One assumption I made was when I didn't put the rental information like daily and weekly rates into the car table. I needed it to show the rates at a glance when printing
+the information in my html website. You won't see them in my ERR or my relational schema because I only realized I needed them while making the Python program. 
+Another assumption I made was the update transactions. It says in the homework they are meant to print the data, but I also made a function to update the date 
+in the database based on user input.
+
+CREATE TABLES:
+
+create database CAR_RENTAL;
+
+
+
+use CAR_RENTAL;
+
+
+
+create table CUSTOMER(
+
+    IDNo int auto_increment not null,
+
+    Name varchar(20) not null,
+
+    Phone varchar(12) not null,
+
+    primary key (IDNo)
+
+    );
+
+
+
+create table CAR(
+
+    VehicleID int auto_increment not null,
+
+    Year int(4) not null,
+
+    Model varchar(15) not null,
+
+    IsAvailable boolean not null,
+
+    Type enum("Truck", "Van", "SUV", "Large", "Medium", "Compact") not null,
+
+    primary key (VehicleID)
+
+    );
+
+    
+
+create table RENTALS(
+
+    RentalID int auto_increment not null,
+
+    WeeklyRate int not null,
+
+    DailyRate int not null,
+
+    AmtDue int not null,
+
+    Type enum("Weekly","Daily") not null,
+
+    IDNo int not null,
+
+    VehicleID int not null,
+
+    primary key (RentalID),
+
+    foreign key (IDNo) references CUSTOMER(IDNo),
+
+    foreign key (VehicleID) references CAR(VehicleID)
+
+    );
+
+    
+
+create table WEEKLY(
+
+    RentalID int not null,
+
+    NoOfWeeks int not null,
+
+    StartDate date not null,
+
+    ReturnDate date not null,
+
+    primary key (RentalID),
+
+    foreign key (RentalID) references RENTALS(RentalID)
+
+    );
+
+    
+
+create table DAILY(
+
+    RentalID int not null,
+
+    NoOfDays int not null,
+
+    StartDate date not null,
+
+    ReturnDate date not null,
+
+    primary key (RentalID),
+
+    foreign key (RentalID) references RENTALS(RentalID)
+
+    );
